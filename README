@@ -1,0 +1,7 @@
+# BlazorBB
+
+BlazorBB is enthusiast project created with ASP.NET on serverside and Blazor on client-side. Using only C#, no javascript! :)
+Warning: This is work in progress, experimental project. Use on your own responsibility
+
+## Installation
+You need Visual Studio 2019 Preview and .NET Core 3.0. After that just open solution and start it!

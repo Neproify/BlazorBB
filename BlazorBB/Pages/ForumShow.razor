@@ -1,0 +1,27 @@
+﻿@page "/forum/{Id:int}/{Name?}"
+@using BlazorBB.Data.Models
+@using BlazorBB.Data
+@inject ForumService ForumService
+
+@if (forum == null)
+{
+	<p>Loading...</p>
+}
+else
+{
+	<h1>@forum.Name</h1>
+}
+
+@code {
+	[Parameter]
+	public int Id { get; set; }
+	[Parameter]
+	public string? Name { get; set; }
+
+	public Forum? forum;
+
+	protected override async Task OnInitializedAsync()
+	{
+		forum = await ForumService.GetByID(Id);
+	}
+}

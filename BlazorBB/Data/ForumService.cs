@@ -18,5 +18,10 @@ namespace BlazorBB.Data
         {
             return await _context.Forums.ToArrayAsync();
         }
+
+        public async Task<Forum> GetByID(int ID)
+        {
+            return await _context.Forums.FirstAsync(x => x.ID == ID);
+        }
     }
 }

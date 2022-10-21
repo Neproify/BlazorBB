@@ -1,5 +1,27 @@
 ﻿@page "/"
+@using BlazorBB.Data
+@using BlazorBB.Data.Models
+@inject ForumService ForumService
 
 <PageTitle>Index</PageTitle>
 
-<h1>Hello, world!</h1>
+@if (forums == null)
+{
+	<p>Loading...</p>
+}
+else
+{
+	@foreach(var forum in forums)
+	{
+		<ForumOverview Forum="@forum"/>
+	}
+}
+
+@code {
+	private Forum[]? forums;
+
+	protected override async Task OnInitializedAsync()
+	{
+		forums = await ForumService.GetForumsAsync();
+	}
+}

@@ -1,0 +1,17 @@
+﻿@using BlazorBB.Data.Models
+
+<div>
+	@if (Forum == null)
+	{
+		<p>Loading...</p>
+	}
+	else
+	{
+		<a href="#">@Forum.Name</a>
+	}
+</div>
+
+@code {
+	[Parameter]
+	public Forum? Forum { get; set; }
+}

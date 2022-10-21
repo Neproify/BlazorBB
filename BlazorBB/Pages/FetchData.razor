@@ -1,0 +1,45 @@
+﻿@page "/fetchdata"
+
+<PageTitle>Weather forecast</PageTitle>
+
+@using BlazorBB.Data
+@using BlazorBB.Data.Models
+@inject ForumService ForumService
+
+<h1>Weather forecast</h1>
+
+<p>This component demonstrates fetching data from a service.</p>
+
+@if (forums == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var forum in forums)
+            {
+                <tr>
+                    <td>@forum.ID</td>
+                    <td>@forum.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Forum[]? forums;
+
+    protected override async Task OnInitializedAsync()
+    {
+        forums = await ForumService.GetForumsAsync();
+    }
+}
